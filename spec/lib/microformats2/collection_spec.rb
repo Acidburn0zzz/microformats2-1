@@ -73,6 +73,11 @@ describe Microformats2::Collection do
           @collection.card.contents.first.should be_kind_of Microformats2::Property::Embedded
         end
       end
+      describe "h-card with a plurally-named nested tag" do
+        it "is properly parsed" do
+          expect(@collection.card.hours.to_s).to eql("")
+        end
+      end
       describe "Format.add_property" do
         let(:value) { "bar" }
         it "creates the attr" do
